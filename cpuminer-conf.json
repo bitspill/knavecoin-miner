@@ -4,11 +4,12 @@
 
 	"api-bind" : "127.0.0.1:4048",
 
-	"url" : "stratum+tcp://yiimp.ccminer.org:4252",
-	"user" : "benchmark",
-	"pass" : "d=0.024",
+	"url" : "127.0.0.1:16723",
+	"user" : "knc",
+	"pass" : "password",
 
-	"algo" : "decred",
+	"algo" : "scrypt",
+        "nfactor" : 10,
 	"threads" : 0,
 	"cpu-priority" : 0,
 	"cpu-affinity" : -1,

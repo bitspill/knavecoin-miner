@@ -107,6 +107,7 @@ enum algos {
 	ALGO_SCRYPTJANE,  /* Chacha */
 	ALGO_SHAVITE3,    /* Shavite3 */
 	ALGO_SHA256D,     /* SHA-256d */
+
 	ALGO_SIB,         /* X11 + gost (Sibcoin) */
 	ALGO_SKEIN,       /* Skein */
 	ALGO_SKEIN2,      /* Double skein (Woodcoin) */
@@ -193,9 +194,9 @@ int opt_timeout = 300;
 static int opt_scantime = 5;
 static const bool opt_time = true;
 static enum algos opt_algo = ALGO_SCRYPT;
-static int opt_scrypt_n = 1024;
+static int opt_scrypt_n = 2048;
 static int opt_pluck_n = 128;
-static unsigned int opt_nfactor = 6;
+static unsigned int opt_nfactor = 10;
 int opt_n_threads = 0;
 int64_t opt_affinity = -1L;
 int opt_priority = 0;
@@ -477,7 +478,7 @@ static void affine_to_cpu_mask(int id, unsigned long mask) { }
 
 void get_currentalgo(char* buf, int sz)
 {
-	if (opt_algo == ALGO_SCRYPTJANE)
+	if (opt_algo == ALGO_SCRYPTJANE || opt_algo == ALGO_SCRYPT)
 		snprintf(buf, sz, "%s:%d", algo_names[opt_algo], opt_scrypt_n);
 	else
 		snprintf(buf, sz, "%s", algo_names[opt_algo]);
